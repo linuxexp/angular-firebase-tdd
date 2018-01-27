@@ -8,7 +8,9 @@ angular.module("angular-common")
 
         return {
             config: function(config) {
-              firebase.initializeApp(config);
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(config);
+                }
             },
             $get: function() {
                 return firebase;

@@ -7,6 +7,10 @@ install:
  - git submodule update
  - npm install -g bower
  - npm install -g karma-cli
- - npm run install
+ - npm install
+ - bower install
+ - cd infrastructure/functions
+ - npm install
+ - cd -
  - npm run build
  - npm test

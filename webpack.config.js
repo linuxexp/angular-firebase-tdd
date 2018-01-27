@@ -7,12 +7,15 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const config = {
-    entry: [path.join(__dirname, 'app/libraries.js'), path.join(__dirname, 'app/app.js')],
+    entry: {
+        "bundle": [path.join(__dirname, 'app/libraries.js'), path.join(__dirname, 'app/app.js')],
+        "firebase-messaging-sw": path.join(__dirname, 'app/service-worker.js')
+    },
     devtool: "eval-source-map",
     output: {
         path: path.join(__dirname, 'dist'),
         publicPath: "/",
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     target: 'web',
     plugins: [
@@ -28,6 +31,10 @@ const config = {
                 loaders: [
                     'babel-loader'
                 ]
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             },
             {
                 test: /\.css$/,

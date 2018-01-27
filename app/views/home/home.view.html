@@ -1,66 +1,40 @@
+<md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">
+        <span>DataGrid</span>
+        <span flex></span>
+        <img style="height: 40px;border-radius: 20px;margin-right:1rem;" ng-if="!!user" ng-src="{{user.photoURL}}" />
+        <span>{{user.displayName}}</span>
+        <md-button ng-if="!user" ng-click="login()">Login</md-button>
+        <md-button ng-if="user" ng-click="logout()">Sign-out</md-button>
+    </div>
+</md-toolbar>
+
 <md-content style="height: 600px;" md-theme="altTheme">
 
-    <section>
-        <md-subheader class="md-primary">Unread Messages</md-subheader>
-        <md-list layout-padding>
-            <md-list-item class="md-3-line" ng-repeat="message in messages">
-                <div class="md-list-item-text">
-                    <h3>{{message.what}}</h3>
-                    <h4>{{message.who}}</h4>
-                    <p>
-                        {{message.notes}}
-                    </p>
+    <md-card flex="50">
+        <div ng-repeat="(key, message) in messages" layout="row" style="padding: 10px;">
+            <div>
+                <img ng-if="!message.photoUrl" style="height: 40px;border-radius: 20px;" src="http://i.pravatar.cc/300" />
+                <img ng-if="message.photoUrl" style="height: 40px;border-radius: 20px;" ng-src="{{message.photoUrl}}" />
+            </div>
+            <div style="padding-left: 1rem;">
+                <div>{{message.text}}</div>
+                <div style="color:grey">{{message.name}}</div>
+                <div ng-if="message.imageUrl">
+                    <img height="100" ng-src="{{message.imageUrl}}" />
                 </div>
-            </md-list-item>
-        </md-list>
-    </section>
+            </div>
+        </div>
 
-    <section>
-        <md-subheader class="md-warn">Late Messages</md-subheader>
-        <md-list layout="column" layout-padding>
-            <md-list-item class="md-3-line" ng-repeat="message in messages">
-                <div class="md-list-item-text">
-                    <h3>{{message.what}}</h3>
-                    <h4>{{message.who}}</h4>
-                    <p>
-                        {{message.notes}}
-                    </p>
-                </div>
-            </md-list-item>
-        </md-list>
-    </section>
+        <md-card-actions layout="row" layout-align="center center">
+            <md-input-container flex="60">
+                <label>Message...</label>
+                <input ng-model="message.text">
+            </md-input-container>
+            <md-button ng-click="sendMessage()">Send</md-button>
+            <md-button ng-click="addImage()">Image</md-button>
+            <input type="file" ng-show="false" id="imgFile" />
+        </md-card-actions>
 
-    <section>
-        <md-subheader>Read Messages</md-subheader>
-        <md-list layout="column" layout-padding>
-            <md-list-item class="md-3-line" ng-repeat="message in messages">
-                <div class="md-list-item-text">
-                    <h3>{{message.what}}</h3>
-                    <h4>{{message.who}}</h4>
-                    <p>
-                        {{message.notes}}
-                    </p>
-                </div>
-            </md-list-item>
-        </md-list>
-    </section>
-
-    <section>
-        <md-subheader class="md-accent">Archived messages</md-subheader>
-        <md-list layout="column" layout-padding>
-            <md-list-item class="md-3-line" ng-repeat="message in messages">
-                <div class="md-list-item-text">
-                    <h3>{{message.what}}</h3>
-                    <h4>{{message.who}}</h4>
-                    <p>
-                        {{message.notes}}
-                    </p>
-                </div>
-            </md-list-item>
-        </md-list>
-    </section>
-
+    </md-card>
 </md-content>
-
-<md-button flex="50" class="md-primary md-raised" ng-click="showListBottomSheet()">Show as List</md-button>
-<span class="scss-support">Support for SCSS</span>

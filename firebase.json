@@ -1,0 +1,14 @@
+{
+  "database": {
+    "rules": "infrastructure/database/database-rules.json"
+  },
+  "storage": {
+    "rules": "infrastructure/storage/storage.rules"
+  },
+  "hosting": {
+    "public": "./dist/",
+    "ignore": [
+      ".gitignore"
+    ]
+  }
+}

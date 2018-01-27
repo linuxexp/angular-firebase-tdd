@@ -1,0 +1,8 @@
+{
+  "apiKey": "AIzaSyBSFRRPChs8bmfGhnggqE23vVDG-H1tQ-M",
+  "authDomain": "angular-firebase-tdd.firebaseapp.com",
+  "databaseURL": "https://angular-firebase-tdd.firebaseio.com",
+  "projectId": "angular-firebase-tdd",
+  "storageBucket": "angular-firebase-tdd.appspot.com",
+  "messagingSenderId": "401153570712"
+}

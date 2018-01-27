@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/linuxexp/angular-material-common.svg?branch=master)](https://travis-ci.org/linuxexp/angular-material-common)
+[![Build Status](https://travis-ci.org/linuxexp/angular-firebase-tdd.svg?branch=master)](https://travis-ci.org/linuxexp/angular-firebase-tdd)
 
 Boilerplate code to build TDD/BDD scalable infrastructure
 

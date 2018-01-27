@@ -19,7 +19,7 @@ git submodule update
 
 Install node dependencies for project & sub-modules 
 ```
-npm run install
+npm run configure
 ```
 
 Start development server 

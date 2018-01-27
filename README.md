@@ -8,7 +8,9 @@ https://angular-firebase-tdd.firebaseapp.com/
 To Get Started
 ==
 
-Clone `firebase-functions` as submodule
+Clone my
+https://github.com/linuxexp/firebase-functions-tdd
+, `firebase-functions-tdd` as submodule
 
 ```
 git submodule init

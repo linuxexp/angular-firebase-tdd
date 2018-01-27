@@ -8,6 +8,13 @@ https://angular-firebase-tdd.firebaseapp.com/
 To Get Started
 ==
 
+Clone `firebase-functions` as submodule
+
+```
+git submodule init
+git submodule update
+```
+
 Install node dependencies for project & sub-modules 
 ```
 npm run install

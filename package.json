@@ -7,7 +7,8 @@
     "install": "npm install && bower install && cd infrastructure/functions && npm install",
     "test": "karma start",
     "start": "webpack-dev-server --content-base dist/",
-    "build": "NODE_ENV=\"production\" webpack"
+    "build": "NODE_ENV=\"production\" webpack",
+    "deploy": "firebase deploy --project angular-firebase-tdd"
   },
   "author": "Raja Jamwal",
   "license": "ISC",

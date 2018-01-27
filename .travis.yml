@@ -3,9 +3,10 @@ node_js:
  - "node"
 
 install:
+ - git submodule init
+ - git submodule upate
  - npm install -g bower
  - npm install -g karma-cli
- - npm install
- - bower install
+ - npm run install
  - npm run build
  - npm test

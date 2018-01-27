@@ -1,18 +1,16 @@
 [![Build Status](https://travis-ci.org/linuxexp/angular-material-common.svg?branch=master)](https://travis-ci.org/linuxexp/angular-material-common)
 
-Boilerplate code to build full-blown Test Driven apps using angular, angular-material, Travis CICD
+Boilerplate code to build TDD/BDD scalable infrastructure
+
+## Sample app
+https://angular-firebase-tdd.firebaseapp.com/
 
 To Get Started
 ==
 
-Install node dependencies 
+Install node dependencies for project & sub-modules 
 ```
-npm install
-```
-
-Install bower dependencies 
-```
-bower install
+npm run install
 ```
 
 Start development server 
@@ -38,7 +36,17 @@ Build can be accessed at `http://localhost:8000/`
 Run Unit Tests
 ```
 npm test
+
 ```
+
+## Deploy 
+
+Deploy entire infrastructure, like a pro!
+```bash
+npm run deploy
+```
+
+You can also run dry run infra configurations.
 
 Continuous Integration & Continuous Integration
 ===
@@ -48,7 +56,7 @@ Travis CICD is integrated by default. Integrating with any other CICD is trivial
 In the box
 ===========
 * Webpack 2
-* Webpack loaders for CSS, SCSS, ngTemplate-loader, HTML, Font, file-loader (png, jpeg, gif)
+* Webpack loaders for CSS, SCSS, ngTemplate-loader, HTML, Font, file-loader (png, jpeg, gif), json-loaders, uglifier
 * Babel ES6
 * Webpack Development Server
 * AngularJS
@@ -61,35 +69,43 @@ In the box
 * Mocha
 * Chai
 * Angular-mocks
+* Firebase
+* FCM and service workers
+* Firebase-auth
+* Firebase-storage
+* Firebase-databse
+* Firebase-functions
+
+Best of infrastructure practices
+
+* Infrastructure as code, `infrastructure/` defines the codified infrastructure.
+* Multiple namespaces for infrastructure (staging, alpha, beta...), it couldn't get easier than this, 
+change app level config in `app/conf/firebase.json` and deploy pointing to new projectId.
+
+`firebase deploy --project <project-id>`
+
 
 License
-========
-Released under creative commons license
+==
+Released under creative commons license, Be sure to add credits for me!.
 
 
-## FCM send
+## Testing FCM send
 
-https://console.firebase.google.com/u/0/project/angular-firebase-tdd/settings/cloudmessaging/
+You'll need Server API Token, get it from, `https://console.firebase.google.com/u/0/project/angular-firebase-tdd/settings/cloudmessaging/`
+
+Change `angular-firebase-tdd` to your `projectId`
 
 ```bash
 curl -H "Content-Type: application/json" \
-     -H "Authorization: key=AAAAXWadt5g:APA91bHrbEx3zowtH6pATes2Ey63GaDypSiFJ_yXT-9OOEYedu9NhWvSL4mp4DdMcEjhzYZ4cdh0AFD7ObLc4GSlPWH3QTMBYEIPTUcaACPfpJH9VW2hCq2KyeQsVwBHCPsW0amUVhfK" \
+     -H "Authorization: key=<server-key>" \
      -d '{
            "notification": {
              "title": "New chat message!",
-             "body": "There is a new message in FriendlyChat",
-             "icon": "/images/profile_placeholder.png",
+             "body": "There is a new message",
              "click_action": "http://localhost:5000"
            },
-           "to": "fmzdq2wnMLA:APA91bH-JEL0yZZhibH-_DnN2BskCicjinkcl6DzbPjPxH0egwF6itaEzRbz5SrjtBwsiP6QofB3icY5n0a2rPxUuXNZWYh8AeltIXoCA_20HHvfHwzKcSWhaVtbzi7XFiWScHUy0-kA"
+           "to": "<fcm-token>"
          }' \
      https://fcm.googleapis.com/fcm/send
 ```
-
-## Deploy database
-
-```
-firebase deploy --only database --project angular-firebase-tdd
-```
-
-## Node version > 6.11, 6.12.3

@@ -5,6 +5,9 @@
   "storage": {
     "rules": "infrastructure/storage/storage.rules"
   },
+  "functions": {
+    "source": "infrastructure/functions/"
+  },
   "hosting": {
     "public": "./dist/",
     "ignore": [

@@ -1,0 +1,15 @@
+{
+  "name": "angular-firebase-tdd-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raja Jamwal",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^5.8.1",
+    "firebase-functions": "^0.8.1"
+  }
+}

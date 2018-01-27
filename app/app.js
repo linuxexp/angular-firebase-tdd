@@ -4,7 +4,7 @@
 
 const fireConfig = require("conf/firebase.json");
 
-var app = angular.module('angular-common', ['ui.router', 'ngMaterial']);
+const app = angular.module('angular-common', ['ui.router', 'ngMaterial']);
 app.config(function($stateProvider, $urlRouterProvider, FirebaseProvider) {
 
     const config = fireConfig;

@@ -10,11 +10,9 @@ angular.module("angular-common")
             fireMessaging.getToken().then(function(currentToken) {
                 if (currentToken) {
                     console.log('Got FCM device token:', currentToken);
-                    // Saving the Device Token to the datastore.
                     fireDatabase.ref('/fcmTokens').child(currentToken)
                         .set(fireAuth.currentUser.uid);
                 } else {
-                    // Need to request permissions to show notifications.
                     requestNotificationPerms();
                 }
             }).catch(function () {
@@ -25,14 +23,9 @@ angular.module("angular-common")
         const requestNotificationPerms = function() {
             fireMessaging.requestPermission()
                 .then(function() {
-                    console.log("got perms");
                     saveFCM();
                 })
         };
-
-
-
-        console.log("Firebase ", Firebase);
 
         $scope.onAuthChange = function(user) {
             $scope.user = user;
@@ -124,22 +117,8 @@ angular.module("angular-common")
             }
         };
 
-        $scope.showListBottomSheet = function() {
-            $scope.alert = '';
-            $mdBottomSheet.show({
-                templateUrl: 'views/home/bottom-sheet-list-template/bottom-sheet-list-template.html',
-                controller: 'ListBottomSheetCtrl'
-            }).then(function(clickedItem) {
-                $scope.alert = clickedItem['name'] + ' clicked!';
-            }).catch(function(error) {
-                // User clicked outside or hit escape
-            });
-        };
-
     });
 
 require("./home.view.html");
 require("./home.scss");
-require("app/views/home/bottom-sheet-list-template/bottom-sheet-list-template.js");
-
 require("provider/firebase.provider.js");

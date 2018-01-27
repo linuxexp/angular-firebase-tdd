@@ -16,5 +16,4 @@ angular.module("angular-common")
                 return firebase;
             }
         }
-
     });

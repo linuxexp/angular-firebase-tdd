@@ -37,6 +37,7 @@
     "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
+    "@firebase/firestore": "^0.3.1",
     "angular-mocks": "^1.6.8",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",

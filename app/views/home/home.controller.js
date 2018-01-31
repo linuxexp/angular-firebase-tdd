@@ -5,6 +5,21 @@ angular.module("angular-common")
         const fireDatabase = Firebase.database();
         const fireMessaging = Firebase.messaging();
 
+        const fireStore = Firebase.firestore();
+        fireStore.collection("users").add({
+                first: "Ada",
+                last: "Lovelace",
+                born: 1815,
+                bla: [
+                    {
+                        a: "b"
+                    }
+                ]
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            });
+
         const saveFCM = function() {
 
             fireMessaging.getToken().then(function(currentToken) {

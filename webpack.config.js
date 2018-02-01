@@ -4,7 +4,12 @@
 const path = require("path");
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
+
+const webpack = require('webpack');
 
 const config = {
     entry: {
@@ -28,6 +33,7 @@ const config = {
         loaders: [
             {
                 test: /\.js/,
+                exclude: /node_modules/,
                 loaders: [
                     'babel-loader'
                 ]
@@ -81,15 +87,30 @@ const config = {
 
 if (process.env.NODE_ENV === "production") {
     config.devtool = "";
-    // Add more configuration for production here like
-    // Uglify plugin
-    // Offline plugin
-    // Etc,
+
     config.plugins.push(new UglifyJsPlugin({
         uglifyOptions: {
             compress: true,
         }
-    }))
+    }));
+
+    config.plugins.push(new webpack.DefinePlugin({
+           'process.env.NODE_ENV': JSON.stringify('production')
+    }));
+
+}
+
+if (process.env.NODE_ENV === "bundle") {
+    config.devtool = "";
+    config.plugins.push(new UglifyJsPlugin({
+        uglifyOptions: {
+            compress: true,
+        }
+    }));
+    config.plugins.push(new BundleAnalyzerPlugin());
+    config.plugins.push(new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production')
+    }));
 }
 
 module.exports = config;

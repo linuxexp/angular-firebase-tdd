@@ -4,7 +4,14 @@
 
 const fireConfig = require("conf/firebase.json");
 
-const app = angular.module('angular-common', ['ui.router', 'ngMaterial']);
+import uiRouter from "@uirouter/angularjs";
+
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-material';
+import 'angular-material/angular-material.css';
+
+const app = angular.module('angular-common', [uiRouter, 'ngMaterial']);
 app.config(function($stateProvider, $urlRouterProvider, FirebaseProvider) {
 
     const config = fireConfig;
